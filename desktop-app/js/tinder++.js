@@ -14,7 +14,7 @@
     win.menu = nativeMenuBar;
   }
 
-  var app = angular.module('tinder++', ['tinder++.login', 'tinder++.swipe', 'tinder++.messages', 'tinder++.profile', 'ngRoute', 'tinder++.settings', 'tinder++.controls']);
+  var app = angular.module('tinder++', ['tinder++.login', 'tinder++.swipe', 'tinder++.messages', 'tinder++.profile', 'ngRoute', 'tinder++.settings', 'tinder++.controls', 'tinder++.shortcuts']);
 
   app.config(function($routeProvider) {
     var capitalize = function (s) { return s[0].toUpperCase() + s.slice(1); };
@@ -28,7 +28,7 @@
     });
   });
 
-  app.run(function($location, Settings, Controls) {
+  app.run(function($location, Settings, Controls, Shortcuts) {
     var firstPage = (localStorage.tinderToken ? Settings.get('landingPage') : '/login');
     $location.path(firstPage);
     Controls.init();
