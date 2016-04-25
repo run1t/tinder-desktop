@@ -68,6 +68,19 @@ body:first-child {
   overflow: hidden;
 }
 
+h1{
+  font-weight: 300;
+  color:#2C3E50;
+  padding-left: 20px;
+  margin: 0;
+}
+
+#title p{
+  margin:0;
+  font-weight: 200;
+  padding-left: 20px;
+}
+
 .banner{
   width: 100%;
   height: 100px;
@@ -281,3 +294,108 @@ body:first-child {
   cursor: pointer;
 }
 
+/*Message*/
+#match-list .scrollable-matchlist{
+  overflow-y: scroll;
+  width: 300px;
+  height: 598px;
+  float:left;
+}
+
+#match-list .scrollable-matchlist .image-wrapper{
+  width: 42px;
+  height: 50px;
+  margin-right: 10px;
+  float: left;
+}
+
+#match-list .scrollable-matchlist img{
+  width: 40px;
+  border-radius: 30px;
+  position: relative;
+  top:10px;
+  margin-right: 10px;
+  float:left;
+}
+
+#match-list .scrollable-matchlist .match{
+  height: 63px;
+  margin-right: 20px;
+  margin-left: 20px;
+  border-bottom: 1px solid #DEE1E2;
+  cursor: pointer!important;
+}
+
+#match-list .scrollable-matchlist .match:hover {
+  color:white!important;
+  margin:0;
+  background-color: #FF6B6B;
+}
+
+#match-list .scrollable-matchlist .match:hover .image-wrapper{
+  color:white!important;
+  margin-left:20px;
+  background-color: #FF6B6B;
+}
+
+#match-list .scrollable-matchlist .match:hover div{
+  color:white!important;
+}
+
+#match-list .scrollable-matchlist .match:hover i{
+  color:white!important;
+}
+
+#match-list .scrollable-matchlist .match.active  {
+  color:white!important;
+  margin:0;
+  background-color: #FF6B6B;
+}
+
+#match-list .scrollable-matchlist .match.active .image-wrapper{
+  color:white!important;
+  margin-left:20px;
+  background-color: #FF6B6B;
+}
+
+#match-list .scrollable-matchlist .match.active  div{
+  color:white!important;
+}
+
+#match-list .scrollable-matchlist .match.active  i{
+  color:white!important;
+}
+
+#match-list .scrollable-matchlist .info-container{
+  position: relative;
+  height: 10px;
+  top:15px;
+  float: left;
+  cursor: pointer!important;
+}
+
+#match-list .scrollable-matchlist .info-container .name{
+  position: relative;
+  top:-5px;
+  font-size: 15px;
+  margin-bottom: 10px;
+  color:#2C3E50;
+  cursor: pointer!important;
+}
+
+#match-list .scrollable-matchlist .info-container .name .pink{
+  color:#FF6B6B;
+}
+
+#match-list .scrollable-matchlist .info-container .info{
+  position: relative;
+  top:-12px;
+  font-weight: 200;
+  font-size: 13px;
+  margin-bottom: 10px;
+  color:#2C3E50;
+}
+
+#match-list .scrollable-matchlist .info-container .info i{
+  color:#FF6B6B;
+}

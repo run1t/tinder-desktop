@@ -1,25 +1,32 @@
 <div class="wrapper">
   <div class="wrapper-menu" ng-include src="'partials/menu.html'"></div>
   <div class="wrapper-page">
+    <div class="banner">
+    </div>
+    <div id="title">
+      <h1>Messages</h1>
+      <p> 35 conversations</p>
+    </div>
     <div id="match-list" ng-class="showExtra && 'more-info'">
-      <div class="match-header" translate="MESSAGES.MATCHES_COUNT"
-         translate-values="{ count: conversationCount }">
-      </div>
       <div class="scrollable-matchlist">
         <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
           ng-click="open(match.matchId)"
           ng-class="{true: 'selected'}[currentMatch === match.matchId]"
           class="match">
-          <img ng-src="{{match.thumbnail || 'img/anonymous.png'}}" class="thumbnail"/>
+          <div class="image-wrapper">
+            <img ng-src="{{match.thumbnail || 'img/anonymous.png'}}" class="thumbnail"/>
+          </div>
           <div class="info-container">
             <div class="name">
               {{match.name || 'Unknown'}}
-              <i ng-show="match.isSuperLike" class="fa fa-star"></i>
+              <i ng-show="match.isSuperLike" class="fa fa-star "></i>
+              <i ng-if="lastMessage(match) == 'sent'" class="fa fa-eye-slash pink"></i>
+              <i ng-if="lastMessage(match) == 'seen'" class="fa fa-eye pink"></i>
+              <i ng-if="lastMessage(match) == 'new'" class="fa fa-comment pink"></i>
             </div>
             <div class="info" ng-show="showExtra && match.infoUpdateTime">
-              <i class="fa fa-location-arrow"></i> {{match.userDistance | distanceToUnits}} |
-              <i class="fa fa-bolt"></i> <span short-time-ago="{{match.userPingTime}}"></span> |
-              <i class="fa fa-comments" ng-class="lastMessageClass(match)"></i> <span short-time-ago="{{match.lastActive}}"></span>
+              <i class="fa fa-map-marker"></i> {{match.userDistance | distanceToUnits}} 
+              <i class="fa fa-bolt"></i> <span short-time-ago="{{match.userPingTime}}"></span>
             </div>
           </div>
         </div>

@@ -25,18 +25,18 @@
         API.unmatch(conversation.matchId)
       });
     }
-
-    $scope.lastMessageClass = function (match) {
+    
+    $scope.lastMessage = function (match) {
       if (match.messages.length) {
         var lastMessage = match.messages[match.messages.length - 1];
         if (lastMessage.fromMe) {
           if (moment(match.userPingTime).isAfter(lastMessage.sentDate)) {
-            return 'last-me-pass';
+            return 'seen';
           } else {
-            return 'last-me-rest';
+            return 'sent';
           }
         } else {
-          return 'last-them';
+          return 'new';
         }
       }
       return '';
