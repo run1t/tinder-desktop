@@ -6,14 +6,14 @@
   module.controller('SwipeController', function SwipeController($scope, $route, $timeout, $interval, $location, API, Cache) {
     API.getHistory();
     function GenerateHtmlStack(){
-
-      var HtmlStack = document.querySelector(".main-photo-container");  
+      var HtmlStack = document.querySelector(".stack");  
+      
       while(HtmlStack.firstChild){
         HtmlStack.removeChild(HtmlStack.firstChild);
       }
       
       for(var i = 0; i < $scope.allPeople.length; i++){
-        var card = document.createElement("div");
+        var card = document.createElement("li");
         var stampLike = document.createElement("i");
         stampLike.className = "fa fa-thumbs-o-up stampLike ng-hide";
         var stampPass = document.createElement("i");
@@ -32,8 +32,7 @@
           image.onload = function () {
             $scope.$apply(function () {
               c.style.backgroundImage = 'url("' + $scope.allPeople[index].photos[0].processedFiles[0].url+ '")';
-              c.style.transform = "rotate(" + (Math.floor(Math.random()*(3+3+1)-3)) + "deg)";
-              c.className = "main-photo tinder-card";
+              c.className = "in-deck like-overlay";
             });
           };
           image.src = $scope.allPeople[index].photos[0].processedFiles[0].url;
@@ -49,13 +48,13 @@
           return Math.min(Math.abs(offset) / 250, 1);
         }
       };
-      $scope.cards = [].slice.call(document.querySelectorAll('.main-photo-container div'));
+      $scope.cards = [].slice.call(document.querySelectorAll('.stack li'));
        
       window.stack = Swing.Stack(config);
       
       $scope.cards.forEach(function (targetElement) {
         window.stack.createCard(targetElement);
-        targetElement.classList.add('tinder-card');
+        targetElement.classList.add('in-deck');
       });
 
       window.stack.on('throwout', function (e) {
@@ -73,11 +72,11 @@
            if($scope.allPeople.length == 3){
              preLoad('reload');
            }
-           e.target.classList.remove('tinder-card');
+           e.target.classList.remove('in-deck');
        });
 
       window.stack.on('throwin', function (e) {
-           e.target.classList.add('tinder-card');
+           e.target.classList.add('in-deck');
        });
        
        window.stack.on('dragmove', function (e){
@@ -241,7 +240,7 @@
       image.onload = function () {
         $scope.$apply(function () {
           card.style.backgroundImage = 'url("' + $scope.allPeople[$scope.allPeople.length-1].photos[index].processedFiles[0].url+ '")';
-          card.className = "tinder-card";
+          card.className = "in-deck";
         });
       };
       image.src = $scope.allPeople[$scope.allPeople.length-1].photos[index].processedFiles[0].url;
