@@ -36,6 +36,7 @@
     "gulp": "^3.9.1",
     "gulp-appdmg": "^1.0.2",
     "gulp-inno": "0.0.7",
+    "gulp-livereload": "^3.8.1",
     "gulp-load-plugins": "^1.2.0",
     "merge-stream": "^1.0.0",
     "removeNPMAbsolutePaths": "^0.0.1",

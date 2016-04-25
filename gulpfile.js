@@ -7,6 +7,7 @@ var removeNPMAbsolutePaths = require('removeNPMAbsolutePaths');
 var runSequence = require('run-sequence');
 var shelljs = require('shelljs');
 var packager = require('electron-packager');
+var livereload = require('gulp-livereload');
 var $ = require('gulp-load-plugins')();
 
 var buildDir = './build';
@@ -47,6 +48,16 @@ gulp.task('compile:stylesheets', function() {
     .pipe(gulp.dest('desktop-app/css'));
 });
 
+gulp.task('livereload:css', function(){
+  return gulp.src('desktop-app/css/app.css')
+  .pipe(livereload());
+});
+
+gulp.task('watch', function(){
+  livereload.listen();
+  gulp.watch('desktop-app/css/app.css', ['livereload:css']);
+});
+
 // Fonts assets handler
 gulp.task('compile:fonts', function() {
   return gulp.src(PATHS.fonts)
@@ -78,7 +89,7 @@ gulp.task('clean', function() {
         icon = './assets-osx/icon.icns';
       } else if(platform == 'win32') {
         icon = './assets-windows/icon.ico';
-      };
+      }
 
       var opts = {
         platform: platform,
@@ -200,4 +211,4 @@ gulp.task('run', ['compile:all'], function(callback) {
 });
 
 // Default task is to run Tinder Desktop in debug mode
-gulp.task('default', ['run']);
+gulp.task('default', ['run','watch']);
