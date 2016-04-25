@@ -131,15 +131,15 @@
         Cache.put('people',null);
       }
       if(!Cache.get('people') || preload){
-        API.people().then(function(people){
-          if(preload){
-            var cur = Cache.get('people');
-            Cache.put('people',people.concat(cur));
-          }else{
-            Cache.put('people',people);    
-          }
-          setPeople(Cache.get('people'));
-        });
+        // API.people().then(function(people){
+        //   if(preload){
+        //     var cur = Cache.get('people');
+        //     Cache.put('people',people.concat(cur));
+        //   }else{
+        //     Cache.put('people',people);    
+        //   }
+        //   setPeople(Cache.get('people'));
+        // });
       }else{
         setPeople(Cache.get('people'));
       }
