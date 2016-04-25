@@ -216,6 +216,7 @@ body:first-child {
   position: relative;
   top: 30px;
   left:535px;
+  height: 493px;
   max-width: 450px;
   background-color: white;
   border-radius: 5px;
@@ -258,3 +259,25 @@ body:first-child {
 .profile p i{
   padding-right: 5px;
 }
+
+.profile .small-photos{
+  overflow: hidden;
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+}
+
+.profile .small-photos div{
+  width: 2000px;
+}
+
+.profile .small-photos div img{
+  height: 100px;
+  width: 100px;
+  border: 1px solid #DEE1E2;
+  border-radius: 3px;
+  margin:10px;
+  float:left;
+  cursor: pointer;
+}
+
