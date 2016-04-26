@@ -85,6 +85,12 @@ textarea:focus, input:focus{
   padding-left: 20px;
 }
 
+#title p{
+  margin:0;
+  font-weight: 200;
+  padding-left: 20px;
+}
+
 .banner{
   width: 100%;
   height: 100px;
@@ -98,7 +104,8 @@ textarea:focus, input:focus{
 
 #title{
   width: 100%;
-  height: 70px;
+  border-bottom: 1px solid #EBEBEB;
+  height: 100px;
 }
 
 .wrapper-menu{
@@ -299,10 +306,14 @@ textarea:focus, input:focus{
 }
 
 /*Message*/
+#match-list{
+  float:left;
+  border-right: 1px solid grey;
+}
 #match-list .scrollable-matchlist{
   overflow-y: scroll;
   width: 300px;
-  height: 598px;
+  height: 668px;
   float:left;
 }
 
@@ -333,6 +344,11 @@ textarea:focus, input:focus{
 #match-list .scrollable-matchlist .match:hover {
   color:white!important;
   margin:0;
+  height: 64px;
+  position: relative;
+  border: 0;
+  top:-1px;
+  border:none;
   background-color: #FF6B6B;
 }
 
@@ -347,6 +363,11 @@ textarea:focus, input:focus{
 }
 
 #match-list .scrollable-matchlist .match:hover i{
+  color:white!important;
+}
+
+#match-list .scrollable-matchlist .match:hover img{
+  top:11px;
   color:white!important;
 }
 
@@ -406,37 +427,46 @@ textarea:focus, input:focus{
 
 #conversation {
   vertical-align: bottom;
-  height: 620px;
-  overflow: scroll;
+  float:left;
+  width: 698px;
+  height:668px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 #conversation .messages-textarea{
-  position: absolute;
-  left:510px;
-  bottom: 0px;
+  margin-left: 35px;
 }
 
 #conversation .messages-textarea input{
+  vertical-align: bottom;
   border-radius: 3px;
   border: 1px solid #BFC5C7;
   height: 30px;
-  width: 670px;
+  width: 608px;
   font-weight: 200;
   padding-left:5px;
   resize: none;
 }
 
-.messages-list-container,.messages-list {
+.messages-list-container {
   vertical-align: bottom;
   display: table-cell;
-  max-height: 500px;
+  height: 500px;
   width: 688px;
-  overflow: hidden;
 }
 
-.messages-list-container .messages-list > div{
+.messages-list {
+  overflow-y: scroll;
+  width: 700px;
+  height: 560px;
+}
+
+.messages-list > div{
   vertical-align: bottom;
-  overflow: hidden;
+  overflow: hidden
 }
 
 .from-me{
@@ -453,13 +483,29 @@ textarea:focus, input:focus{
 
 .from-me div:nth-last-child(2){
   font-weight: 200;
-  background-color: #51A6FD;
+  background-color: #49A9B7;
   width: 300px;
   color:white;
   padding: 8px;
-  margin-right: 10px;
+  margin-right: 15px;
   border-radius: 3px;
   bottom:0;
+}
+
+.from-me div:nth-last-child(2)::before {
+  box-sizing: content-box;
+  z-index: -1;
+  width: 20px;
+  height: 10px;
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 0;
+  right: 0;
+  border: none;
+  text-overflow: clip;
+  background: #49A9B7;
+  transform:   translateX(-10px) skewX(-46deg);
 }
 
 .from-them{
@@ -472,9 +518,25 @@ textarea:focus, input:focus{
   background-color: #E5E5EA;
   max-width: 300px;
   padding: 8px;
-  margin-left: 10px;
+  margin-left: 15px;
   border-radius: 3px;
   bottom:0;
+}
+
+.from-them div:nth-last-child(2)::before {
+  box-sizing: content-box;
+  z-index: -1;
+  width: 20px;
+  height: 10px;
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border: none;
+  text-overflow: clip;
+  background: #E5E5EA;
+  transform:   translateX(10px) skewX(46deg);
 }
 
 .from-them div:nth-last-child(1){
@@ -482,4 +544,32 @@ textarea:focus, input:focus{
   float:left;
   margin-left: 10px;
   color:#ACB1B3;
+}
+
+.message-header{
+  height: 60px;
+  z-index: 20;
+  width:698px;
+  background-color: white;
+  border-bottom: 1px solid #EBEBEB;
+}
+
+button{
+  min-width: 100px;
+  border: none;
+  border-radius: 3px;
+  background-color: #FF6B6B;
+  color:white;
+  font-weight: 200;
+  padding:5px 10px;
+}
+
+.chat-with{
+  margin:15px;
+  float: left;
+}
+
+.match-options{
+  float: right;
+  margin:15px;
 }

@@ -1,12 +1,11 @@
 <div class="wrapper">
   <div class="wrapper-menu" ng-include src="'partials/menu.html'"></div>
   <div class="wrapper-page">
-    <div class="banner">
-    </div>
     <div id="title">
       <h1>Messages</h1>
       <p> 35 conversations</p>
     </div>
+    <div class="wrapper-messages">
     <div id="match-list" ng-class="showExtra && 'more-info'">
       <div class="scrollable-matchlist">
         <div ng-repeat="match in conversations | orderObjectBy:'lastActive':true track by match.matchId"
@@ -35,14 +34,13 @@
     <div id="conversation" ng-show="conversation">
       <div class="message-header">
         <div class="chat-with">
-          {{'MESSAGES.CHAT_WITH' | translate}} <a ng-href="#/profile/{{conversation.userId}}">{{conversation.name}}</a>
+          <a ng-href="#/profile/{{conversation.userId}}">
+            <button>{{'PROFILE.TITLE' | translate}}</button>
+          </a>
         </div>
         <div class="match-options">
-          <a ng-href="#/profile/{{conversation.userId}}">
-          {{'PROFILE.TITLE' | translate}}
-          </a>
           <a ng-click="unmatch(conversation)">
-          {{'MESSAGES.UNMATCH' | translate}}
+            <button>{{'MESSAGES.UNMATCH' | translate}}</button>
           </a>
         </div>
       </div>
@@ -71,11 +69,13 @@
             <div class="pending-message">{{message}}</div>
           </div>
           <div ng-repeat-end class="messages-in-chat" scroll-to-last></div>
+        
+        </div>
+        <div class="messages-textarea">
+          <input ng-keypress="keypress($event)" ng-model="message" placeholder="{{'MESSAGES.MESSAGE_PLACEHOLDER' | translate}}">
         </div>
       </div>
-      <div class="messages-textarea">
-        <input ng-keypress="keypress($event)" ng-model="message" placeholder="{{'MESSAGES.MESSAGE_PLACEHOLDER' | translate}}">
-      </div>
+    </div>
     </div>
   </div>
 </div>

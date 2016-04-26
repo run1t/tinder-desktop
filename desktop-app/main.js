@@ -199,7 +199,7 @@ app.on('ready', function() {
 
 // Create the initial window.
 function createWindow() {
-  mainWindow = new BrowserWindow({width: 1200, height: 768});
+  mainWindow = new BrowserWindow({width: 1200, height: 768, resizable: false});
   mainWindow.loadURL('file://' + __dirname + '/index.html');
 
   mainWindow.on('closed', function() {
