@@ -49,7 +49,7 @@
     $scope.settings = Settings.settings;
     $scope.syncSettings = Settings.sync;
 	  $scope.showLocation = false;
-
+    
     $scope.logout = function() {
       API.logout();
     };

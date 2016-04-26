@@ -5,7 +5,8 @@
     // console.log(API.conversations)
     $scope.conversations = API.conversations;
     $scope.conversationCount = Object.keys($scope.conversations).length
-    $scope.showExtra = Settings.get('messageListExtraInfo') === 'yes';
+    console.log(Settings.get('messageListExtraInfo'))
+    $scope.showExtra = Settings.get('messageListExtraInfo');
     $scope.open = function(matchId) {
       $scope.currentMatch = matchId
       $scope.conversation = $scope.conversations[matchId];
