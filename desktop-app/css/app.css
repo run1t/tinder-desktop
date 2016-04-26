@@ -79,6 +79,13 @@ textarea:focus, input:focus{
     outline: none;
 }
 
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
 #title p{
   margin:0;
   font-weight: 200;
@@ -574,6 +581,11 @@ button{
   margin:15px;
 }
 
+/*Settings*/
+.settings{
+  margin-left: 20px;
+}
+
 fieldset:first-child {
   margin-top: 40px;
 }
@@ -583,7 +595,7 @@ fieldset {
   border-radius: 3px;
   position: relative;
   width: 300px;
-  margin-left: 20px;
+  padding: 5px;
   margin-bottom: 20px;
 }
 
@@ -595,10 +607,12 @@ legend {
 }
 
 .switch-wrapper{
-  margin:10px;
+  margin:3px;
 }
 
 .text-switch{
+  font-size: 11pt;
+  font-weight: 200;
   float:left;
 }
 .check-switch {
@@ -638,4 +652,61 @@ legend {
 }
 .check-switch input:checked + label{
   background: #FF6B6B;
+}
+
+/*Radio button*/
+.option-input {
+  -webkit-appearance: none;
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin-left: 1px;
+  height: 30px;
+  width: 140px;
+  transition: all 0.15s ease-out 0s;
+  background: #cbd1d8;
+  border: none;
+  color: grey;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 0.5rem;
+  outline: none;
+  position: relative;
+  z-index: 1000;
+}
+.option-input:hover {
+  background: #9faab7;
+}
+.option-input:checked {
+  color:white;
+  background: #FF6B6B;
+}
+.option-input::before {
+  height: 20px;
+  width: 18px;
+  position: absolute;
+  content: attr(content);
+  display: inline-block;
+  padding: 5px;
+  font-size: 11pt;
+  font-weight: 200;
+  line-height: 20px;
+}
+.option-input:checked::after {
+  -webkit-animation: click-wave 0.65s;
+  -moz-animation: click-wave 0.65s;
+  animation: click-wave 0.65s;
+  background: #40e0d0;
+  content: '';
+  display: block;
+  position: relative;
+  z-index: 100;
+}
+.option-input.radio {
+  float: left;
+  border-radius: 3px;
+}
+.option-input.radio::after {
+  border-radius: 3px;
 }

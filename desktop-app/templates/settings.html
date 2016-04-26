@@ -7,24 +7,10 @@
     <div class="settings">
   <form name="tppSettings">
     <fieldset>
-      <legend translate="SETTINGS.LANDING_PAGE"></legend>
-      <label for="landingPage_1">
-        <input type="radio" name="landingPage" id="landingPage_1" value="/swipe" ng-model="settings.landingPage" ng-change="syncSettings()"/>
-        {{'SETTINGS.SWIPE' | translate}}
-      </label>
-      <br/>
-      <label for="landingPage_2">
-        <input type="radio" name="landingPage" id="landingPage_2" value="/messages" ng-model="settings.landingPage" ng-change="syncSettings()"/>
-        {{'SETTINGS.MESSAGES' | translate}}
-      </label>
-    </fieldset>
-
-    <br/>
-
-    <fieldset>
+      <legend>Message</legend>
       <div class="switch-wrapper">
         <div class="text-switch">
-          yolo
+          Show details
         </div>
         <div class="check-switch">
           <input type="checkbox" name="extraInfo" id="extraInfo_2" value="no" ng-model="settings.messageListExtraInfo" ng-change="syncSettings()"/>
@@ -37,23 +23,22 @@
 
     <fieldset>
       <legend translate="SETTINGS.DISTANCE_UNITS"></legend>
-      <label for="distanceUnits_1">
-        <input type="radio" name="distanceUnits" id="distanceUnits_1" value="mi" ng-model="settings.distanceUnits" ng-change="syncSettings()"/>
-        {{'SETTINGS.MILES' | translate}}
-      </label>
-      <br/>
-      <label for="distanceUnits_2">
-        <input type="radio" name="distanceUnits" id="distanceUnits_2" value="km" ng-model="settings.distanceUnits" ng-change="syncSettings()"/>
-        {{'SETTINGS.KILOMETRES' | translate}}
-      </label>
+      <input type="radio" content="{{'SETTINGS.MILES' | translate}}" class="option-input radio" name="distanceUnits" id="distanceUnits_1" value="mi" ng-model="settings.distanceUnits" ng-change="syncSettings()"/>
+      <input type="radio" content="{{'SETTINGS.KILOMETRES' | translate}}" class="option-input radio" name="distanceUnits" id="distanceUnits_2" value="km" ng-model="settings.distanceUnits" ng-change="syncSettings()"/>
     </fieldset>
 
     <br/>
-
+    
     <fieldset>
-      <legend translate="SETTINGS.LOGOUT"></legend>
-      <a href="" ng-click="logout()" translate="SETTINGS.CLICK_TO_LOGOUT"></a>
+      <legend translate="SETTINGS.LANDING_PAGE"></legend>
+      <input class="option-input radio" content="{{'SETTINGS.SWIPE' | translate}}" type="radio" name="landingPage" id="landingPage_1" value="/swipe" ng-model="settings.landingPage" ng-change="syncSettings()"/>  
+      <input class="option-input radio" content="{{'SETTINGS.MESSAGES' | translate}}" type="radio" name="landingPage" id="landingPage_2" value="/messages" ng-model="settings.landingPage" ng-change="syncSettings()"/>  
     </fieldset>
+    
+    <br/>
+      <a href="" ng-click="logout()">
+        <button translate="SETTINGS.LOGOUT"></button>
+      </a>
   </form>
     </div>
   </div>
