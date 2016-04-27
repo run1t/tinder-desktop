@@ -661,7 +661,6 @@ legend {
   right: 0;
   bottom: 0;
   left: 0;
-  margin-left: 1px;
   height: 30px;
   width: 140px;
   transition: all 0.15s ease-out 0s;
@@ -670,7 +669,6 @@ legend {
   color: grey;
   cursor: pointer;
   display: inline-block;
-  margin-right: 0.5rem;
   outline: none;
   position: relative;
   z-index: 1000;
@@ -694,19 +692,27 @@ legend {
   line-height: 20px;
 }
 .option-input:checked::after {
-  -webkit-animation: click-wave 0.65s;
-  -moz-animation: click-wave 0.65s;
-  animation: click-wave 0.65s;
+
   background: #40e0d0;
   content: '';
   display: block;
   position: relative;
   z-index: 100;
 }
-.option-input.radio {
+fieldset > .option-input.radio:nth-child(2) {
   float: left;
-  border-radius: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
-.option-input.radio::after {
+
+fieldset > .option-input.radio:nth-child(3) {
+  float: left;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+
+fieldset .option-input.radio::after {
+  
   border-radius: 3px;
 }
