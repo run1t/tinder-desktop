@@ -56,7 +56,7 @@
       </fieldset>
         <br/>
       <fieldset>
-        <legend translate="DISCOVERY.SEARCH_PROXIMITY"> </legend>
+        <legend translate="DISCOVERY.SEARCH_PROXIMITY" translate-values="{ distance: (Discovery.distance_filter | distanceToUnits) }"> </legend>
           <div class="range">
             <input type="range" name="distance" min="2" max="100" ng-model="Discovery.distance_filter" />
           </div> 
