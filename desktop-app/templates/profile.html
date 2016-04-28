@@ -1,13 +1,17 @@
 <div class="wrapper">
   <div class="wrapper-menu" ng-include src="'partials/menu.html'"></div>
   <div class="wrapper-page">
+    <div id="title">
+      <h1>Profile</h1>
+    </div>
     <div class="container" ng-show="user">
       <div class="responsive-profile">
-        <div class="main-photo-container">
-          <div class="main-photo tinder-card"
-            style="background-image: url({{user.photos[photoIndex].processedFiles[0].url}});">
+          <div id="viewport">
+            <ul class="stack">
+              <li class="in-deck" style="background-image: url({{user.photos[photoIndex].processedFiles[0].url}});">          
+              </li>
+            </ul>
           </div>
-        </div>
         <div class="profile">
           <div class="information">
             <h1 class="name fader">
