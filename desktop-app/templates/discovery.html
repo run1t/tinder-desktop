@@ -1,8 +1,20 @@
 <div class="wrapper">
   <div class="wrapper-menu" ng-include src="'partials/menu.html'"></div>
   <div class="wrapper-page">
+    <div id="title">
+      <h1>Discovery</h1>
+    </div>
     <div class="settings">
     <form name="discoverySettings">
+      <fieldset>
+        <div class="switch-wrapper">
+          <div class="text-switch" translate="DISCOVERY.DISCOVERABLE"></div>
+          <div class="check-switch">
+            <input type="checkbox" name="discoverable" id="discoverable_1" ng-model="Discovery.discoverable"/>
+            <label for="discoverable_1"><span><em></em></span></label>
+          </div>
+        </div>
+      </fieldset>
       <fieldset ng-show="Discovery.tinder_plus">
         <legend translate="DISCOVERY.PASSPORT"></legend>
         <p ng-show="Discovery.is_traveling">
@@ -18,17 +30,6 @@
           id="autocompleteLocation" />
         </div>
         <a ng-show="Discovery.is_traveling" href="" ng-click="resetPassport()" translate="DISCOVERY.ACTUAL_LOCATION"></a>
-      </fieldset>
-      <fieldset>
-        <legend translate="DISCOVERY.DISCOVERABLE"></legend>
-        <label for="Yes">
-          <input type="radio" name="discoverable" id="discoverable_1" value="1" ng-model="Discovery.discoverable" />
-          {{'DISCOVERY.YES' | translate}}
-        </label>  
-        <label for="No">
-          <input type="radio" name="discoverable" id="discoverable_2" value="0" ng-model="Discovery.discoverable" />
-          {{'DISCOVERY.NO' | translate}}
-        </label>
       </fieldset>
       <fieldset>
         <legend translate="DISCOVERY.SHOW_ME"></legend>

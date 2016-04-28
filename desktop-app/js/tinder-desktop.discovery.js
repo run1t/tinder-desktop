@@ -21,7 +21,7 @@
 
     function fillDiscovery(){
       var res = Cache.get('account');
-      $scope.Discovery.discoverable = res.user.discoverable ? '1' : '0';
+      $scope.Discovery.discoverable = res.user.discoverable;
       $scope.Discovery.gender_filter = res.user.gender_filter;
       $scope.Discovery.distance_filter = res.user.distance_filter;
       $scope.Discovery.age_filter = { from: res.user.age_filter_min, to: res.user.age_filter_max };
@@ -40,7 +40,7 @@
     }
     
     $scope.updateDiscoverySettings = function() {
-      API.updatePreferences(Boolean(parseInt($scope.Discovery.discoverable)), $scope.Discovery.age_filter.from
+      API.updatePreferences($scope.Discovery.discoverable, $scope.Discovery.age_filter.from
         , $scope.Discovery.age_filter.to, parseInt($scope.Discovery.gender_filter)
         , parseInt($scope.Discovery.distance_filter))
         .then(function(){
