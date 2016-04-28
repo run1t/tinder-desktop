@@ -11,7 +11,7 @@
     "FEMALE": "Femme",
     "MALE": "Homme",
     "BOTH": "Les deux",
-    "SEARCH_PROXIMITY": "Distance pour la recherche",
+    "SEARCH_PROXIMITY": "Distance pour la recherche: {{distance}}",
     "DISPLAY_AGES": "Afficher les Âges: {{from_age}} - {{to_age}}"
   },
   "MESSAGES": {

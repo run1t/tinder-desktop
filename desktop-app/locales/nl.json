@@ -11,7 +11,7 @@
     "FEMALE": "Vrouwen",
     "MALE": "Mannen",
     "BOTH": "Allebei",
-    "SEARCH_PROXIMITY": "Zoekafstand",
+    "SEARCH_PROXIMITY": "Zoekafstand: {{distance}}",
     "DISPLAY_AGES": "Geef leeftijden weer van {{from_age}} tot {{to_age}} jaar"
   },
   "MESSAGES": {

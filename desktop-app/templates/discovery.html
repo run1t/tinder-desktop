@@ -15,52 +15,61 @@
           </div>
         </div>
       </fieldset>
+        <br/>
       <fieldset ng-show="Discovery.tinder_plus">
         <legend translate="DISCOVERY.PASSPORT"></legend>
-        <p ng-show="Discovery.is_traveling">
-          {{ Discovery.currentLocation }}
-        </p>
-        <p ng-show="!Discovery.is_traveling"
-           translate="DISCOVERY.ACTUAL_LOCATION">
-        </p>
-        <div>
-          <input type="text" ng-autocomplete ng-model="autocomplete" 
-          options="autocompleteOptions" details="details" 
-          placeholder="{{'DISCOVERY.CHANGE_LOCATION' | translate}}" 
-          id="autocompleteLocation" />
+        <div class="passportComplete">
+          <div ng-if="Discovery.is_traveling">
+            <input type="text" ng-autocomplete ng-model="autocomplete" 
+            options="autocompleteOptions" details="details" 
+            placeholder="{{Discovery.currentLocation}}" 
+            id="autocompleteLocation" />
+          </div>
+          <div ng-if="!Discovery.is_traveling">
+            <input type="text" ng-autocomplete ng-model="autocomplete" 
+            options="autocompleteOptions" details="details" 
+            placeholder="Current Location" 
+            id="autocompleteLocation" />
+          </div>
         </div>
-        <a ng-show="Discovery.is_traveling" href="" ng-click="resetPassport()" translate="DISCOVERY.ACTUAL_LOCATION"></a>
+        <div class="passportReset">
+          <a ng-show="Discovery.is_traveling" href="" ng-click="resetPassport()"><button>Reset</button></a>
+        </div>
       </fieldset>
+        <br/>
       <fieldset>
         <legend translate="DISCOVERY.SHOW_ME"></legend>
-        <label for="Female">
-          <input type="radio" name="chooseGender" id="chooseGender_1" value="1" ng-model="Discovery.gender_filter" />
-          {{'DISCOVERY.FEMALE' | translate}}
-        </label>
-        <label for="Male">
-          <input type="radio" name="chooseGender" id="chooseGender_2" value="0" ng-model="Discovery.gender_filter" />
-          {{'DISCOVERY.MALE' | translate}}
-        </label>
-        <label for="Both">
-          <input type="radio" name="chooseGender" id="chooseGender_3" value="-1" ng-model="Discovery.gender_filter" />
-          {{'DISCOVERY.BOTH' | translate}}
-        </label>
+        <div class="switch-wrapper">
+          <div class="text-switch" translate="DISCOVERY.FEMALE"></div>
+          <div class="check-switch">
+            <input type="checkbox" name="chooseGender" id="chooseGender_1" ng-model="Discovery.gender_filter.female"/>
+            <label for="chooseGender_1"><span><em></em></span></label>
+          </div>
+        </div>
+        <div class="switch-wrapper">
+          <div class="text-switch" translate="DISCOVERY.MALE"></div>
+          <div class="check-switch">
+            <input type="checkbox" name="chooseGender2" id="chooseGender_2" ng-model="Discovery.gender_filter.male"/>
+            <label for="chooseGender_2"><span><em></em></span></label>
+          </div>
+        </div>
       </fieldset>
+        <br/>
       <fieldset>
-        <legend translate="DISCOVERY.SEARCH_PROXIMITY"></legend>
-        <label for="distance">
-          <input type="range" name="distance" min="2" max="100" ng-model="Discovery.distance_filter" />
-          {{Discovery.distance_filter | distanceToUnits}}
-        </label>
+        <legend translate="DISCOVERY.SEARCH_PROXIMITY"> </legend>
+          <div class="range">
+            <input type="range" name="distance" min="2" max="100" ng-model="Discovery.distance_filter" />
+          </div> 
       </fieldset>
+        <br/>
       <fieldset>
         <legend translate="DISCOVERY.DISPLAY_AGES" 
                 translate-values="{ from_age: Discovery.age_filter.from, 
                                     to_age: Discovery.age_filter.to}">
         </legend>
-        <label for="age">
+        <div class="range">
           <section data-range-slider class="range-slider" ng-model="Discovery.age_filter" min="18" max="55"></section>
-        </label>
+        </div>
       </fieldset>
     </form>
     </div>

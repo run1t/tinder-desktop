@@ -11,6 +11,11 @@
       }
     };
     
+    $scope.Discovery.gender_filter = {
+      male: true,
+      female: true
+    }; 
+    
     if(Cache.get('account')){
       fillDiscovery();
     }
@@ -21,8 +26,31 @@
 
     function fillDiscovery(){
       var res = Cache.get('account');
+      console.log(res);
       $scope.Discovery.discoverable = res.user.discoverable;
-      $scope.Discovery.gender_filter = res.user.gender_filter;
+      console.log(res.user.discoverable);
+
+      switch (res.user.gender_filter) {
+        case 0:
+        console.log(0);
+          $scope.Discovery.gender_filter.male = true;
+          $scope.Discovery.gender_filter.female = false;
+          break;
+        case 1:
+        console.log(1);
+          $scope.Discovery.gender_filter.female = true;
+          $scope.Discovery.gender_filter.male = false;
+          break;
+        case -1:
+        console.log(-1);
+          $scope.Discovery.gender_filter.male = true;  
+          $scope.Discovery.gender_filter.female = true;
+          break;          
+      }
+      $timeout(function() {
+        $scope.$apply();
+      });
+      console.log($scope.Discovery.gender_filter);
       $scope.Discovery.distance_filter = res.user.distance_filter;
       $scope.Discovery.age_filter = { from: res.user.age_filter_min, to: res.user.age_filter_max };
       $scope.Discovery.is_traveling = res.travel.is_traveling;
@@ -35,13 +63,22 @@
 
       $scope.watchDiscoveryChange = function () { return $scope.Discovery; };  
       $scope.$watch($scope.watchDiscoveryChange, function () {
+        console.log($scope.Discovery.gender_filter);
         change++;
       }, true);
     }
     
     $scope.updateDiscoverySettings = function() {
+      var gender_filter = null;
+      if($scope.Discovery.gender_filter.male && $scope.Discovery.gender_filter.female){
+        gender_filter = -1;
+      }else if($scope.Discovery.gender_filter.male){
+        gender_filter = 0;
+      }else {
+        gender_filter = 1;
+      }
       API.updatePreferences($scope.Discovery.discoverable, $scope.Discovery.age_filter.from
-        , $scope.Discovery.age_filter.to, parseInt($scope.Discovery.gender_filter)
+        , $scope.Discovery.age_filter.to, gender_filter
         , parseInt($scope.Discovery.distance_filter))
         .then(function(){
           console.log('Preferences updated');
@@ -81,7 +118,7 @@
             fillDiscovery();
           }); 
       });
-    }
+    };
       
   });
 })();

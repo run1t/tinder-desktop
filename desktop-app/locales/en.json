@@ -11,7 +11,7 @@
     "FEMALE": "Female",
     "MALE": "Male",
     "BOTH": "Both",
-    "SEARCH_PROXIMITY": "Search proximity",
+    "SEARCH_PROXIMITY": "Search proximity: {{distance}}",
     "DISPLAY_AGES": "Display ages from {{from_age}} to {{to_age}}"
   },
   "MESSAGES": {
