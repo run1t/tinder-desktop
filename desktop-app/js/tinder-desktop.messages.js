@@ -111,14 +111,18 @@
   });
 
   // Scroll to bottom in conversations
-  module.directive('scrollToLast', function() {
+  module.directive('scrollToLast',['$location','$anchorScroll',function($location,$anchorScroll) {
     return function(scope, element, attrs) {
       if(scope.$last) {
         // console.log("Scrolling", scope);
         setTimeout(function(){
-          angular.element(element)[0].scrollIntoView();
+          console.log(angular.element(element));
+          angular.element(element)[0].setAttribute("id", "bottom");
+          $location.hash('bottom');
+          // call $anchorScroll()
+          $anchorScroll();
         });
       }
     };
-  });
+  }]);
 })();

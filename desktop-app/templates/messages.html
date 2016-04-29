@@ -52,17 +52,15 @@
           <!-- normal messages -->
           <div ng-repeat-start="message in conversation.messages track by $index"
             ng-click="$showTimeStamp = !$showTimeStamp"
-            style="position:relative">
-            <div class="{{message.fromMe ? 'from-me' : 'from-them'}}">
+            class="{{message.fromMe ? 'from-me' : 'from-them'}}">
               <div ng-if="message.text"
                 ng-bind-html="message.text"></div>
               <div class="{{message.fromMe ? 'from-me-date sentAt' : 'from-them-date sentAt'}}"
                 ng-class="{true: 'bounceIn', false: 'bounceOut'}[$showTimeStamp === true]">
                 {{message.sentDate | timeToLocalized}}
               </div>
-            </div>
           </div>
-          <div ng-repeat-end class="messages-in-chat" scroll-to-last></div>
+          <div ng-repeat-end class="clear" scroll-to-last></div>
           <!-- pending messages -->
           <div ng-repeat-start="message in conversation.pending track by $index"
             class="from-me">
@@ -71,9 +69,9 @@
           <div ng-repeat-end class="messages-in-chat" scroll-to-last></div>
         
         </div>
-        <div class="messages-textarea">
-          <input ng-keypress="keypress($event)" ng-model="message" placeholder="{{'MESSAGES.MESSAGE_PLACEHOLDER' | translate}}">
-        </div>
+      </div>
+      <div class="messages-textarea">
+        <input ng-keypress="keypress($event)" ng-model="message" placeholder="{{'MESSAGES.MESSAGE_PLACEHOLDER' | translate}}">
       </div>
     </div>
     </div>

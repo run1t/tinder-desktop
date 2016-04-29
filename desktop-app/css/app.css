@@ -440,15 +440,12 @@ fieldset {
   vertical-align: bottom;
   float:left;
   width: 698px;
-  height:668px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
+  height:200px;
 }
 
 #conversation .messages-textarea{
   margin-left: 35px;
+  margin-top: 10px;
 }
 
 #conversation .messages-textarea input{
@@ -463,31 +460,38 @@ fieldset {
 }
 
 .messages-list-container {
-  vertical-align: bottom;
-  display: table-cell;
-  height: 500px;
-  width: 688px;
+  padding-top: 10px;
+  height: 545px;
+  overflow-y:scroll;
+  width: 700px;
 }
 
 .messages-list {
-  overflow-y: scroll;
   width: 700px;
-  height: 560px;
+  height: 540px;
+  display: table-cell;
+  vertical-align: bottom;
 }
 
-.messages-list > div{
-  vertical-align: bottom;
-  overflow: hidden
+.clear{
+  clear:both;
 }
 
 .from-me{
-    float:right;
-    margin-bottom: 10px;
+  display: table-cell; 
+  margin-top: 5px;
+  float: right;
+}
+
+
+.from-them{
+  display: table-cell; 
+  margin-top: 5px;
+  float: left;  
 }
 
 .from-me div:nth-last-child(1){
   font-size: 8pt;
-  float:right;
   margin-right: 10px;
   color:#ACB1B3;
 }
@@ -519,10 +523,6 @@ fieldset {
   transform:   translateX(-10px) skewX(-46deg);
 }
 
-.from-them{
-    float:left;
-    margin-bottom: 10px;
-}
 
 .from-them div:nth-last-child(2) {
   font-weight: 200;
