@@ -3,7 +3,8 @@
   <div class="wrapper-page">
     <div id="title">
       <h1>Messages</h1>
-      <p> 35 conversations</p>
+      <p  translate="MESSAGES.MATCHES_COUNT"
+         translate-values="{ count: conversationCount }" > 35 conversations</p>
     </div>
     <div class="wrapper-messages">
     <div id="match-list" ng-class="showExtra && 'more-info'">
@@ -53,9 +54,9 @@
           <div ng-repeat-start="message in conversation.messages track by $index"
             ng-click="$showTimeStamp = !$showTimeStamp"
             class="{{message.fromMe ? 'from-me' : 'from-them'}}">
-              <div ng-if="message.text"
+              <div class="message-text" ng-if="message.text"
                 ng-bind-html="message.text"></div>
-              <div class="{{message.fromMe ? 'from-me-date sentAt' : 'from-them-date sentAt'}}"
+              <div class="message-date {{message.fromMe ? 'from-me-date sentAt' : 'from-them-date sentAt'}}"
                 ng-class="{true: 'bounceIn', false: 'bounceOut'}[$showTimeStamp === true]">
                 {{message.sentDate | timeToLocalized}}
               </div>

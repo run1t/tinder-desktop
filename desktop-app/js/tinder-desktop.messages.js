@@ -1,14 +1,19 @@
 (function() {
   module = angular.module('tinder-desktop.messages', ['tinder-desktop.api', 'tinder-desktop.settings', 'tinder-desktop.common', 'ngSanitize']);
 
-  module.controller('MessagesController', function($scope, API, Settings) {
+  module.controller('MessagesController', function($scope, API, Settings, orderByFilter, $timeout) {
     // console.log(API.conversations)
     $scope.conversations = API.conversations;
-    $scope.conversationCount = Object.keys($scope.conversations).length
-    console.log(Settings.get('messageListExtraInfo'))
+    $scope.conversationCount = Object.keys($scope.conversations).length;
+    console.log($scope.conversationCount);
+    console.log($scope.conversations);
+    $timeout(function () {
+      console.log(orderByFilter(Object.keys($scope.conversations), 'lastActive', true));
+    }, 2000);
+    
     $scope.showExtra = Settings.get('messageListExtraInfo');
     $scope.open = function(matchId) {
-      $scope.currentMatch = matchId
+      $scope.currentMatch = matchId;
       $scope.conversation = $scope.conversations[matchId];
     };
     var ENTER = 13;
@@ -23,9 +28,9 @@
         confirmButtonText: "Yes, unmatch",   
         closeOnConfirm: true }, 
       function(){   
-        API.unmatch(conversation.matchId)
+        API.unmatch(conversation.matchId);
       });
-    }
+    };
     
     $scope.lastMessage = function (match) {
       if (match.messages.length) {
@@ -111,18 +116,14 @@
   });
 
   // Scroll to bottom in conversations
-  module.directive('scrollToLast',['$location','$anchorScroll',function($location,$anchorScroll) {
+  module.directive('scrollToLast', function() {
     return function(scope, element, attrs) {
       if(scope.$last) {
         // console.log("Scrolling", scope);
         setTimeout(function(){
-          console.log(angular.element(element));
-          angular.element(element)[0].setAttribute("id", "bottom");
-          $location.hash('bottom');
-          // call $anchorScroll()
-          $anchorScroll();
+          angular.element(element)[0].scrollIntoView();
         });
       }
     };
-  }]);
+  });
 })();

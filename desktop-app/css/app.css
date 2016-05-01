@@ -110,7 +110,7 @@ fieldset {
 
 .container{
   width: 100%;
-  height: 598px;
+  height: 668px;
 }
 
 #title{
@@ -147,7 +147,7 @@ fieldset {
   padding: 20px;
 }
 
-.menu-item a{
+a{
   text-decoration: none;
   font-weight: 300;
   color:#95A5A6;
@@ -319,7 +319,7 @@ fieldset {
 /*Message*/
 #match-list{
   float:left;
-  border-right: 1px solid grey;
+  border-right: 1px solid #DEE1E2;
 }
 #match-list .scrollable-matchlist{
   overflow-y: scroll;
@@ -490,13 +490,14 @@ fieldset {
   float: left;  
 }
 
-.from-me div:nth-last-child(1){
+.from-me .message-date{
   font-size: 8pt;
-  margin-right: 10px;
+  float: right;
+  margin-right: 20px;
   color:#ACB1B3;
 }
 
-.from-me div:nth-last-child(2){
+.from-me .message-text{
   font-weight: 200;
   background-color: #49A9B7;
   width: 300px;
@@ -507,24 +508,9 @@ fieldset {
   bottom:0;
 }
 
-.from-me div:nth-last-child(2)::before {
-  box-sizing: content-box;
-  z-index: -1;
-  width: 20px;
-  height: 10px;
-  position: absolute;
-  content: "";
-  top: 0;
-  bottom: 0;
-  right: 0;
-  border: none;
-  text-overflow: clip;
-  background: #49A9B7;
-  transform:   translateX(-10px) skewX(-46deg);
-}
 
 
-.from-them div:nth-last-child(2) {
+.from-them .message-text {
   font-weight: 200;
   background-color: #E5E5EA;
   max-width: 300px;
@@ -534,23 +520,9 @@ fieldset {
   bottom:0;
 }
 
-.from-them div:nth-last-child(2)::before {
-  box-sizing: content-box;
-  z-index: -1;
-  width: 20px;
-  height: 10px;
-  position: absolute;
-  content: "";
-  top: 0;
-  bottom: 0;
-  left: 0;
-  border: none;
-  text-overflow: clip;
-  background: #E5E5EA;
-  transform:   translateX(10px) skewX(46deg);
-}
 
-.from-them div:nth-last-child(1){
+
+.from-them .message-date{
   font-size: 8pt;
   float:left;
   margin-left: 10px;

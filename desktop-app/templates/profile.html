@@ -21,10 +21,10 @@
             </h1>
             <h3 class="status fader">{{user.distance_mi | distanceToUnits}} {{'PROFILE.AWAY' | translate}}, {{'PROFILE.ACTIVE' | translate}} {{user.ping_time | timeFromNow}}</h3>
             <p class="schoolwork fader">
-              <i ng-repeat="school in user.schools" class="school fa fa-graduation-cap">{{school.name}}</i>
-              <i ng-repeat="job in user.jobs" class="work fa fa-briefcase">
+              <p ng-repeat="school in user.schools" ><i class="school fa fa-graduation-cap"></i>{{school.name}}</p>
+              <p ng-repeat="job in user.jobs" ><i class="work fa fa-briefcase"></i>
           	    {{job.title.name}} {{job.company && job.title ? ('PROFILE.AT' | translate) : ''}} {{job.company.name}}
-              </i>
+              </ip>
             </p>
             <p ng-show="user.bio" class="bio fader" ng-bind-html="user.bio"></p>
           </div>

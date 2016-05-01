@@ -25,7 +25,7 @@
       //Reverse the photos loadings (while need to cache the image to avoid the reload each time)
       var nodes = HtmlStack.childNodes;
       for(i = nodes.length - 1 ; i >= 0; i--) {
-        (function(index,c){
+        (function(index, c) {
           card.className = "ng-hide";
           var image = new Image();
           image.onload = function () {
@@ -35,7 +35,7 @@
             });
           };
           image.src = $scope.allPeople[index].photos[0].processedFiles[0].url;
-        })(i,nodes[i])
+        })(i,nodes[i]);
       }
     }
     
@@ -86,29 +86,39 @@
             e.target.childNodes[1].className = "fa fa-thumbs-o-down stampPass";
             e.target.childNodes[0].className = "fa fa-thumbs-o-up stampLike ng-hide";
           }
-       })
+       });
        
       window.stack.on('dragend', function (e){
           e.target.childNodes[0].className = "fa fa-thumbs-o-up stampLike ng-hide";
           e.target.childNodes[1].className = "fa fa-thumbs-o-up stampPass ng-hide";
-       })
+       });
        
     }
 
     $scope.allPeople = [];
-    $scope.apiInQueue;
+    $scope.apiInQueue = null;
     var queueTimer = null;
 
     API.getAccount().then(function(response){
       $scope.superLikesRemaining = '' + response.rating.super_likes.remaining;
       $scope.timeUntilSuperLike = response.rating.super_likes.resets_at;
-    })
-
+    });
+    
+    
+    $timeout(function () {
+      var res = Cache.get('account');
+      if(res.purchases.length === 0){
+        $scope.tinder_plus = true;
+      }
+    }, 2000);
+  
+    
     $scope.likesRemaining = null;
     $interval(function() { $scope.likesRemaining = API.getLikesRemaining(); 
       $timeout(function() {
         $scope.$apply();
       });
+      console.log($scope.likesRemaining);
     }, 1000);
     
     //Never use
@@ -159,13 +169,13 @@
         API[$scope.apiInQueue.method]($scope.apiInQueue.user._id);
       }
       $scope.apiInQueue = nextObject;
-    }
+    };
     
     $scope.undo = function() {
       $scope.allPeople.push($scope.apiInQueue.user);
       $scope.apiInQueue = null;
       initCards();
-    }
+    };
     
     Mousetrap.bind('left', function (evt) {
       evt.preventDefault();
@@ -185,10 +195,10 @@
 
     Mousetrap.bind('shift+right', function (evt) {      
       if($scope.superLikesRemaining == '0'){
-        var timeUntilSuperLike = $scope.timeUntilSuperLike
-        var formattedTime = moment(timeUntilSuperLike).format('MMMM Do, h:mm:ss a')
+        var timeUntilSuperLike = $scope.timeUntilSuperLike;
+        var formattedTime = moment(timeUntilSuperLike).format('MMMM Do, h:mm:ss a');
         swal("Oops!", "Sorry, you are out of superlikes! \n Try again at " + formattedTime , "error");
-        return false
+        return false;
       }
       superLike = true;
       var card = window.stack.getCard($scope.cards[$scope.cards.length-1]);

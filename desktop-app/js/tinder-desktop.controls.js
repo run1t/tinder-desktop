@@ -83,11 +83,11 @@
 
             notification.onclick = function () {
               remote.getCurrentWindow().show();
-            }
+            };
 
             notification.onshow = function () {
               setTimeout(function() {notification.close();}, 5000);
-            }  
+            } ; 
 
             createConversation(match);
             if (match.person) {
@@ -146,7 +146,7 @@
         sentDate: message.sent_date,
         text: message.message,
         fromMe: (message.from == localStorage.userId)
-      })
+      });
       // Remove possibly pending messages
       var pending = API.conversations[message.match_id].pending;
       if(Array.isArray(pending) && pending.indexOf(message.message) >= 0) {

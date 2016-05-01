@@ -206,12 +206,11 @@
               confirmButtonText: 'Out of daily likes. Maybe try Tinder Plus'
             });
           }
-
+          
           // otherwise, update the amount of likes remaining and resolve the promise
           if (res && typeof res.likes_remaining != 'undefined') {
             likesRemaining = res.likes_remaining;
           }
-          console.log(res);
           resolve(res);
         });
       });
@@ -308,7 +307,7 @@
           resolve(res);
         });
       });
-    }
+    };
     
     apiObj.resetPassport =  function(){
       return $q(function (resolve, reject) {
@@ -321,7 +320,7 @@
           resolve(res);
         });
       });
-    }
+    };
 
     apiObj.getLikesRemaining = function() {
       return likesRemaining;
