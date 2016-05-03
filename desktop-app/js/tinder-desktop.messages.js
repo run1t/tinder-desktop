@@ -121,7 +121,8 @@
       if(scope.$last) {
         // console.log("Scrolling", scope);
         setTimeout(function(){
-          angular.element(element)[0].scrollIntoView();
+          console.log(angular.element(element)[0]);
+          angular.element(element)[0].scrollIntoView(false);
         });
       }
     };

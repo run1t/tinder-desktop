@@ -16,7 +16,7 @@
   },
   "MESSAGES": {
     "TITLE": "Messages",
-    "MATCHES_COUNT": "Match: {{count}}",
+    "MATCHES_COUNT": "Matches: {{count}}",
     "UNKNOWN": "Inconnu",
     "CHAT_WITH": "Discussion avec",
     "UNMATCH": "Supprimer Affinité",
