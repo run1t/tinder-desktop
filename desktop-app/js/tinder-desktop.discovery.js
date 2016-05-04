@@ -11,6 +11,7 @@
       }
     };
     
+    $scope.colors = ['#DEDEDE','#FF6B6B','#DEDEDE'];
     $scope.Discovery.gender_filter = {
       male: true,
       female: true
