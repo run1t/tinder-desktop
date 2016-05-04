@@ -4,6 +4,7 @@
   module.controller('ProfileController', function($scope, $routeParams, API) {
     API.userInfo($routeParams.userId).then(function(user) {
       $scope.user = user;
+      console.log(user);
     });
 
     $scope.backLink = (localStorage.userId === $routeParams.userId) ? '#/swipe' : '#/messages';

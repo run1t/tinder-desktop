@@ -26,7 +26,7 @@
           	    {{job.title.name}} {{job.company && job.title ? ('PROFILE.AT' | translate) : ''}} {{job.company.name}}
               </ip>
             </p>
-            <p ng-show="user.bio" class="bio fader" ng-bind-html="user.bio"></p>
+            <pre ng-show="user.bio" class="bio fader" ng-bind-html="user.bio"></pre>
           </div>
           <div class="small-photos fader">
             <div ng-repeat="photo in user.photos">

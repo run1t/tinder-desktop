@@ -34,7 +34,7 @@
                   {{job.title.name}} {{job.company && job.title ? ('SWIPE.AT' | translate) : ''}} {{job.company.name}}
                 </p>
                 </p>
-                <p ng-show="allPeople[allPeople.length-1].bio" class="bio fader">{{ allPeople[allPeople.length-1].bio }}</p>
+                <pre ng-show="allPeople[allPeople.length-1].bio" ng-bind-html="allPeople[allPeople.length-1].bio" class="bio fader"></pre>
             </div>
             <!-- small inactive photos -->
             <div class="small-photos fader">
