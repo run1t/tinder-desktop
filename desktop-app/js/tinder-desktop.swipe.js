@@ -79,10 +79,11 @@
        });
        
        window.stack.on('dragmove', function (e){
-          if(e.throwDirection == 1){
+        console.log(e);
+          if(e.throwDirection == 1 && e.throwOutConfidence >= 0.3){
             e.target.childNodes[0].className = "fa fa-thumbs-o-up stampLike";
             e.target.childNodes[1].className = "fa fa-thumbs-o-up stampPass ng-hide";
-          }else{
+          }else if(e.throwDirection == -1 && e.throwOutConfidence >= 0.3){
             e.target.childNodes[1].className = "fa fa-thumbs-o-down stampPass";
             e.target.childNodes[0].className = "fa fa-thumbs-o-up stampLike ng-hide";
           }
