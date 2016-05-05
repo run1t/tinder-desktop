@@ -36,9 +36,10 @@
       .fallbackLanguage('en');
   }]);
 
-  app.run(function($location, Settings, Controls) {
+  app.run(function($location, Settings, Controls, Cache) {
     var firstPage = (localStorage.tinderToken ? Settings.get('landingPage') : '/login');
     moment.locale(remote.getGlobal('sharedObject').locale);
+    Cache.put('currentPage',firstPage.split('/')[1]);
     $location.path(firstPage);
     Controls.init();
   });

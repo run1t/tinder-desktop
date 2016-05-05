@@ -169,15 +169,15 @@ a{
   color:#FF6B6B;
 }
 
-.menu-item-activate{
+.menu-item.activate{
   background-color: #243342;
 }
 
-.menu-item .activate span{
+.menu-item.activate span{
   color:white;
 }
 
-.menu-item .activate .fa{
+.menu-item.activate .fa{
   color:#FF6B6B;
 }
 

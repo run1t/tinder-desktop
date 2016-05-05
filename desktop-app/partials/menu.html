@@ -1,30 +1,30 @@
-<div class="menu" ng-controller="MenuController">
+<div class="menu" ng-controller="MenuController"  data-ng-init="init()">
   <div class="menu-logo">
     <a href="">
       </a>
   </div>
-  <a href="#/swipe">
+  <a ng-click="selectPage('swipe')" href="#/swipe">
     <div class="menu-item">
       <span class="fa fa-heart fa-lg"></span><span class="text">Swipe</span>
     </div>
   </a>
-  <a ng-href="#/messages">
+  <a ng-click="selectPage('messages')" href="#/messages">
     <div class="menu-item">
       <span class="fa fa-envelope fa-lg"></span><span class="text">Messages</span>
     </div>
   </a>
-  <a ng-href="#/profile/{{getCookie('userId')}}">
+  <a ng-click="selectPage('profile')" href="#/profile/{{getCookie('userId')}}">
     <div class="menu-item">
       <span class="fa fa-picture-o fa-lg"></span><span class="text">Profile</span>
     </div>
   </a>
-  <a href="#/discovery">
+  <a ng-click="selectPage('discovery')" href="#/discovery">
     <div class="menu-item">
       <span class="fa fa-binoculars fa-lg"></span><span class="text">Discovery</span>
     </div>
   </a>
-  <a href="#/settings">
-    <div class="menu-item activate">
+  <a ng-click="selectPage('settings')" href="#/settings">
+    <div class="menu-item">
     <span class="fa fa-cog fa-lg"></span><span class="text">Settings</span>
     </div>
   </a>
