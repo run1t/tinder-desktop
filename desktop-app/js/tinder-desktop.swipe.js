@@ -79,7 +79,7 @@
        });
        
        window.stack.on('dragmove', function (e){
-        console.log(e);
+      
           if(e.throwDirection == 1 && e.throwOutConfidence >= 0.3){
             e.target.childNodes[0].className = "fa fa-thumbs-o-up stampLike";
             e.target.childNodes[1].className = "fa fa-thumbs-o-up stampPass ng-hide";
@@ -119,7 +119,7 @@
       $timeout(function() {
         $scope.$apply();
       });
-      console.log($scope.likesRemaining);
+  
     }, 1000);
     
     //Never use

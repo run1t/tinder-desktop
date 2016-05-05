@@ -28,23 +28,18 @@
 
     function fillDiscovery(){
       var res = Cache.get('account');
-      console.log(res);
+      
       $scope.Discovery.discoverable = res.user.discoverable;
-      console.log(res.user.discoverable);
-
       switch (res.user.gender_filter) {
         case 0:
-        console.log(0);
           $scope.Discovery.gender_filter.male = true;
           $scope.Discovery.gender_filter.female = false;
           break;
         case 1:
-        console.log(1);
           $scope.Discovery.gender_filter.female = true;
           $scope.Discovery.gender_filter.male = false;
           break;
         case -1:
-        console.log(-1);
           $scope.Discovery.gender_filter.male = true;  
           $scope.Discovery.gender_filter.female = true;
           break;          
@@ -52,7 +47,6 @@
       $timeout(function() {
         $scope.$apply();
       });
-      console.log($scope.Discovery.gender_filter);
       $scope.Discovery.distance_filter = res.user.distance_filter;
       $scope.Discovery.age_filter = { from: res.user.age_filter_min, to: res.user.age_filter_max };
       $scope.Discovery.is_traveling = res.travel.is_traveling;
@@ -61,11 +55,13 @@
       if(res.travel.is_traveling){
         var tl = res.travel.travel_location_info[0];
         $scope.Discovery.currentLocation = tl.locality.short_name + ', ' + tl.street_number.short_name + ' ' + tl.route.short_name;
+        $scope.passportPlaceholder = $scope.Discovery.currentLocation;
+      }else{
+        $scope.passportPlaceholder = 'Current Location';
       }
 
       $scope.watchDiscoveryChange = function () { return $scope.Discovery; };  
       $scope.$watch($scope.watchDiscoveryChange, function () {
-        console.log($scope.Discovery.gender_filter);
         change++;
       }, true);
     }
@@ -94,7 +90,9 @@
     
     $scope.watchAutocomplete = function () { return $scope.details; };
     $scope.$watch($scope.watchAutocomplete, function (details) {
+      console.log(details);
       if (details) {
+        
         var fuzzAmount = +(Math.random() * (0.0000009 - 0.0000001) + 0.0000001);
         var lng = (parseFloat(details.geometry.location.lng()) + fuzzAmount).toFixed(7);
         var lat = (parseFloat(details.geometry.location.lat()) + fuzzAmount).toFixed(7);
@@ -102,6 +100,7 @@
           Cache.put('locationUpdated',true);
           API.getAccount().then(function(res){
               fillDiscovery();
+              $scope.autocomplete = '';
             }); 
         });
       }

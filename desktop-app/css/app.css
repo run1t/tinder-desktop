@@ -713,12 +713,13 @@ fieldset .option-input.radio::after {
 }
 
 .passportComplete{
-  float:left;
-  height: 20px;
+  float: left;
+  height: 30px;
 }
 
 .passportComplete input{
   border:none;
+  font-weight: 200;
   border: 1px solid #DEE1E2;
   padding: 4px;
   height: 20px;
