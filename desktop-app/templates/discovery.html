@@ -58,6 +58,9 @@
       <fieldset>
         <legend translate="DISCOVERY.SEARCH_PROXIMITY" translate-values="{ distance: (Discovery.distance_filter | distanceToUnits) }"> </legend>
           <div class="range">
+            <style>
+              input[name=distance]::-webkit-slider-runnable-track {background: linear-gradient(to right, #FF6B6B  0%, #FF6B6B {{Discovery.distance_filter}}%, #DEDEDE {{Discovery.distance_filter}}%, #DEDEDE 100%);
+            </style>
             <input type="range" name="distance" min="2" max="100" ng-model="Discovery.distance_filter" />
           </div> 
       </fieldset>
