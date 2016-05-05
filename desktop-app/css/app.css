@@ -518,8 +518,6 @@ a{
   bottom:0;
 }
 
-
-
 .from-them .message-text {
   font-weight: 200;
   background-color: #E5E5EA;
@@ -530,12 +528,10 @@ a{
   bottom:0;
 }
 
-
-
 .from-them .message-date{
   font-size: 8pt;
   float:left;
-  margin-left: 10px;
+  margin-left: 15px;
   color:#ACB1B3;
 }
 
@@ -592,7 +588,7 @@ legend {
 }
 
 .switch-wrapper{
-  height: 25px;
+  height: 20px;
   margin:3px;
 }
 

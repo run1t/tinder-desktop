@@ -5,11 +5,9 @@
     // console.log(API.conversations)
     $scope.conversations = API.conversations;
     $scope.conversationCount = Object.keys($scope.conversations).length;
-    console.log($scope.conversationCount);
-    console.log($scope.conversations);
-    $timeout(function () {
-      console.log(orderByFilter(Object.keys($scope.conversations), 'lastActive', true));
-    }, 2000);
+    
+    //get last messages from all Matches
+    $scope.conversation = $scope.conversations[getLastActivity()];
     
     $scope.showExtra = Settings.get('messageListExtraInfo');
     $scope.open = function(matchId) {
@@ -61,8 +59,25 @@
         }
       }
     };
+    
+    function getLastActivity(){
+      var dates = [];
+      var lastMatchId = null;
+      for (conv in $scope.conversations) {
+        for(var i = 0; i < $scope.conversations[conv].messages.length; i++){
+          dates.push(new Date($scope.conversations[conv].messages[i].sentDate).getTime());
+          if(Math.max(...dates) === dates[dates.length-1]){
+            lastMatchId = conv;
+          }
+        }
+      }
+      return lastMatchId;
+    }
+  
   });
-
+  
+  
+  
   module.filter('orderObjectBy', function() {
     return function(items, field, reverse) {
       var filtered = [];
